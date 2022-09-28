@@ -48,7 +48,7 @@ body {
   border: solid 1px black;
 }
 #block.tBlock {
-  background-color: #871abd;
+  background-color: #7c0eb4;
 }
 #block.strait {
   background-color: #20cdcd;
@@ -57,13 +57,13 @@ body {
   background-color: #f0a000;
 }
 #block.leftL {
-  background-color: #2222c9;
+  background-color: #1515d1;
 }
 #block.square {
   background-color: #f0f000;
 }
 #block.leftS {
-  background-color: #b30e0e;
+  background-color: #c30f0f;
 }
 
 #block.rightS {
