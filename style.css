@@ -6,6 +6,13 @@
   --restartbutoncolor: rgb(143, 143, 143);
 }
 
+
+html{
+
+  background-color: rgb(51, 51, 51);
+
+}
+
 body {
   min-height: 900px;
   margin: 0%;
@@ -41,26 +48,26 @@ body {
   border: solid 1px black;
 }
 #block.tBlock {
-  background-color: #7a0ab3;
+  background-color: #871abd;
 }
 #block.strait {
-  background-color: #00f0f0;
+  background-color: #20cdcd;
 }
 #block.rightL {
   background-color: #f0a000;
 }
 #block.leftL {
-  background-color: #0000f0;
+  background-color: #2222c9;
 }
 #block.square {
   background-color: #f0f000;
 }
 #block.leftS {
-  background-color: #f00000;
+  background-color: #b30e0e;
 }
 
 #block.rightS {
-  background-color: #00f000;
+  background-color: #0fb90f;
 }
 
 .resetForm {
