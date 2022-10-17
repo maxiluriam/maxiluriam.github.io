@@ -612,11 +612,11 @@ let land = false;
 
 let blockTick = setInterval(function () {
   if (pause === false) {
-    console.log(movCount,movSpeed);
+   // console.log(movCount,movSpeed);
     pointsUpp(sHeld);
     movCount = counter(movCount, movSpeed);
    [movCount, movSpeed,countCache, SpeedCache] = alterSpeed(movCount, movSpeed);
-    console.log(movCount,movSpeed);
+  //  console.log(movCount,movSpeed);
 
     let death = checkDeath(grid);
 
