@@ -487,6 +487,26 @@ let hitbox = function (Block, grid) {
       }
     }
   }
+}; 
+let alterSpeed = function (movCount, movSpeed) {
+  let points = parseInt(score.innerHTML) 
+  let countCache = movCount;
+  let SpeedCache = movSpeed;
+  
+
+  if (points > 4000 && points < 8000 && movSpeed !== 4 && movSpeed !== 1) {
+    countCache = 4;
+    SpeedCache = 4;
+  } else if (points > 8000 && points < 12000 && movSpeed !== 3 && movSpeed !== 1) {
+    countCache = 3;
+    SpeedCache = 3;
+  } else if (points > 12000 && movSpeed !== 2 && movSpeed !== 1) {
+    countCache = 2;
+    SpeedCache = 2;
+  }
+
+
+  return [countCache,SpeedCache,countCache,SpeedCache];
 };
 
 let counter = function (i, j) {
@@ -519,6 +539,9 @@ let checkSpeed = 10;
 let sHeld = true;
 let lastRotation = [0, 0];
 
+let countCache = 5
+let SpeedCache = 5
+
 var keys = [];
 document.addEventListener("keydown", keyDownHandler);
 document.addEventListener("keyup", keyUpHandler);
@@ -533,8 +556,8 @@ function keyDownHandler(e) {
 
 function keyUpHandler(e) {
   if ((e.key === "s" || e.which === 40) && sHeld === false) {
-    movCount = 5;
-    movSpeed = 5;
+    movCount = 5 
+    movSpeed = 5
     sHeld = true;
   }
 }
@@ -548,15 +571,13 @@ window.addEventListener("keydown", (e) => {
   // console.log(e.key);¨
 
   if (death !== true) {
-    if (e.key === "p") {
+    if (e.key === "p" || e.which === 37) {
       if (pause === false) {
         pause = true;
-      }
-      if (pause === true) {
+      } else if (pause === true) {
         pause = false;
       }
     }
-
     if ((e.key === "a" || e.which === 37) && blockmovement !== "left") {
       block[0].x--;
     }
@@ -584,13 +605,18 @@ window.addEventListener("keydown", (e) => {
     //    render(block, grid);
   }
 });
+
+
 block = chooseBlock();
 let land = false;
 
 let blockTick = setInterval(function () {
   if (pause === false) {
+    console.log(movCount,movSpeed);
     pointsUpp(sHeld);
     movCount = counter(movCount, movSpeed);
+   [movCount, movSpeed,countCache, SpeedCache] = alterSpeed(movCount, movSpeed);
+    console.log(movCount,movSpeed);
 
     let death = checkDeath(grid);
 
