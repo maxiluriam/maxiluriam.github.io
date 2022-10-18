@@ -6,11 +6,8 @@
   --restartbutoncolor: rgb(143, 143, 143);
 }
 
-
-html{
-
+html {
   background-color: rgb(51, 51, 51);
-
 }
 
 body {
@@ -19,6 +16,16 @@ body {
   overflow-y: hidden;
 }
 
+#PhoneButtons {
+  grid-row: 25/25;
+  grid-column: 1/29;
+  margin: auto;
+}
+#PhoneButtons button {
+  padding: 70px;
+
+  margin: 10px;
+}
 .body {
   overflow: hidden;
 
@@ -35,8 +42,8 @@ body {
   margin: auto;
   height: 700px;
   width: 500px;
-  grid-row: 2/9;
-  grid-column: 6/11;
+  grid-row: 2/10;
+  grid-column: 6/12;
   background-color: var(--background);
 
   /* border: inset 2px var(--restartbackground); */

@@ -487,17 +487,21 @@ let hitbox = function (Block, grid) {
       }
     }
   }
-}; 
+};
 let alterSpeed = function (movCount, movSpeed) {
-  let points = parseInt(score.innerHTML) 
+  let points = parseInt(score.innerHTML);
   let countCache = movCount;
   let SpeedCache = movSpeed;
-  
 
   if (points > 4000 && points < 8000 && movSpeed !== 4 && movSpeed !== 1) {
     countCache = 4;
     SpeedCache = 4;
-  } else if (points > 8000 && points < 12000 && movSpeed !== 3 && movSpeed !== 1) {
+  } else if (
+    points > 8000 &&
+    points < 12000 &&
+    movSpeed !== 3 &&
+    movSpeed !== 1
+  ) {
     countCache = 3;
     SpeedCache = 3;
   } else if (points > 12000 && movSpeed !== 2 && movSpeed !== 1) {
@@ -505,8 +509,7 @@ let alterSpeed = function (movCount, movSpeed) {
     SpeedCache = 2;
   }
 
-
-  return [countCache,SpeedCache,countCache,SpeedCache];
+  return [countCache, SpeedCache, countCache, SpeedCache];
 };
 
 let counter = function (i, j) {
@@ -524,6 +527,46 @@ let pointsUpp = function (sHeld) {
   }
 };
 
+document.getElementById("PhoneButtons").addEventListener("submit", (e) => {
+  event.preventDefault();
+  console.log(e.submitter.classList[0]);
+
+  const buttonClass = e.submitter.classList[0];
+
+  let blockmovement = hitbox(block, grid);
+  lastRotation[0] = block[1].rotation;
+  lastRotation[1] = block[0].x;
+  // console.log(e.key);¨
+
+  if (death !== true) {
+    if (buttonClass === "A" && blockmovement !== "left") {
+      block[0].x--;
+    }
+    if (buttonClass === "D" && blockmovement !== "right") {
+      block[0].x++;
+    }
+    if (buttonClass === "Q") {
+      if (block[1].rotation >= 1) {
+        block[1].rotation--;
+      } else {
+        block[1].rotation = block[1].rotation + 3;
+      }
+    }
+    if (buttonClass === "E") {
+      if (block[1].rotation <= 2) {
+        block[1].rotation++;
+      } else {
+        block[1].rotation = block[1].rotation - 3;
+      }
+    }
+
+    //console.log(block[1].rotation, lastRotation);
+    rotate(block, grid, lastRotation);
+
+    //    render(block, grid);
+  }
+});
+
 let grid = createGrid();
 
 let landed = true;
@@ -539,8 +582,8 @@ let checkSpeed = 10;
 let sHeld = true;
 let lastRotation = [0, 0];
 
-let countCache = 5
-let SpeedCache = 5
+let countCache = 5;
+let SpeedCache = 5;
 
 var keys = [];
 document.addEventListener("keydown", keyDownHandler);
@@ -556,8 +599,8 @@ function keyDownHandler(e) {
 
 function keyUpHandler(e) {
   if ((e.key === "s" || e.which === 40) && sHeld === false) {
-    movCount = 5 
-    movSpeed = 5
+    movCount = 5;
+    movSpeed = 5;
     sHeld = true;
   }
 }
@@ -606,17 +649,19 @@ window.addEventListener("keydown", (e) => {
   }
 });
 
-
 block = chooseBlock();
 let land = false;
 
 let blockTick = setInterval(function () {
   if (pause === false) {
-   // console.log(movCount,movSpeed);
+    // console.log(movCount,movSpeed);
     pointsUpp(sHeld);
     movCount = counter(movCount, movSpeed);
-   [movCount, movSpeed,countCache, SpeedCache] = alterSpeed(movCount, movSpeed);
-  //  console.log(movCount,movSpeed);
+    [movCount, movSpeed, countCache, SpeedCache] = alterSpeed(
+      movCount,
+      movSpeed
+    );
+    //  console.log(movCount,movSpeed);
 
     let death = checkDeath(grid);
 
