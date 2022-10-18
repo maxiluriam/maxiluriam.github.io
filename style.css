@@ -117,3 +117,7 @@ body {
   vertical-align: text-top;
   text-align: justify;
 }
+#inactive-button {
+  background-color: rgb(51, 51, 51);
+  border: none;
+}
