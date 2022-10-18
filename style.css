@@ -19,11 +19,12 @@ body {
 #PhoneButtons {
   grid-row: 25/25;
   grid-column: 1/29;
+  touch-action: manipulation;
   margin: auto;
 }
 #PhoneButtons button {
   padding: 70px;
-
+  touch-action: manipulation;
   margin: 10px;
 }
 .body {
