@@ -614,7 +614,7 @@ window.addEventListener("keydown", (e) => {
   // console.log(e.key);¨
 
   if (death !== true) {
-    if (e.key === "p" || e.which === 37) {
+    if (e.key === "p") {
       if (pause === false) {
         pause = true;
       } else if (pause === true) {
