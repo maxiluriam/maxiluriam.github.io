@@ -8,6 +8,7 @@
 
 html {
   background-color: rgb(51, 51, 51);
+  touch-action: manipulation;
 }
 
 body {
