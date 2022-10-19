@@ -567,6 +567,23 @@ document.getElementById("PhoneButtons").addEventListener("submit", (e) => {
   }
 });
 
+document.getElementById("S").addEventListener("mousedown", (e) => {
+  if (sHeld) {
+    movCount = 1;
+    movSpeed = 1;
+    sHeld = false;
+
+    console.log("ww");
+  }
+});
+document.getElementById("S").addEventListener("mouseup", (e) => {
+  if (!sHeld) {
+    movCount = 5;
+    movSpeed = 5;
+    sHeld = true;
+  }
+});
+
 let grid = createGrid();
 
 let landed = true;
@@ -620,21 +637,17 @@ window.addEventListener("keydown", (e) => {
       } else if (pause === true) {
         pause = false;
       }
-    }
-    if ((e.key === "a" || e.which === 37) && blockmovement !== "left") {
+    } else if ((e.key === "a" || e.which === 37) && blockmovement !== "left") {
       block[0].x--;
-    }
-    if ((e.key === "d" || e.which === 39) && blockmovement !== "right") {
+    } else if ((e.key === "d" || e.which === 39) && blockmovement !== "right") {
       block[0].x++;
-    }
-    if (e.key === "q") {
+    } else if (e.key === "q") {
       if (block[1].rotation >= 1) {
         block[1].rotation--;
       } else {
         block[1].rotation = block[1].rotation + 3;
       }
-    }
-    if (e.key === "e" || e.key === "w" || e.which === 38) {
+    } else if (e.key === "e" || e.key === "w" || e.which === 38) {
       if (block[1].rotation <= 2) {
         block[1].rotation++;
       } else {
