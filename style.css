@@ -151,6 +151,10 @@ body {
     display: block;
     margin: 5px;
   }
+
+  .resetForm button {
+    font-size: 100%;
+  }
 }
 @media screen and (min-width: 1200px) {
   #PhoneButtons button {
