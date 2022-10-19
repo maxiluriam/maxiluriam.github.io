@@ -567,7 +567,7 @@ document.getElementById("PhoneButtons").addEventListener("submit", (e) => {
   }
 });
 
-document.getElementById("S").addEventListener("mousedown", (e) => {
+document.getElementById("S").addEventListener("touchstart", (e) => {
   if (sHeld) {
     movCount = 1;
     movSpeed = 1;
@@ -576,7 +576,7 @@ document.getElementById("S").addEventListener("mousedown", (e) => {
     console.log("ww");
   }
 });
-document.getElementById("S").addEventListener("mouseup", (e) => {
+document.getElementById("S").addEventListener("touchend", (e) => {
   if (!sHeld) {
     movCount = 5;
     movSpeed = 5;
