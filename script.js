@@ -536,7 +536,7 @@ document.getElementById("D").addEventListener("click", () => {
 
 
   console.log("ww")
-  if (death !== true && blockmovement !== "left") {
+  if (death !== true && blockmovement !== "right") {
     block[0].x++;
   };
 });
