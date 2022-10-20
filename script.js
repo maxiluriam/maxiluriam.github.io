@@ -527,47 +527,50 @@ let pointsUpp = function (sHeld) {
   }
 };
 
-document.getElementById("PhoneButtons").addEventListener("submit", (e) => {
-  event.preventDefault();
-  console.log(e.submitter.classList[0]);
 
-  const buttonClass = e.submitter.classList[0];
+document.getElementById("D").addEventListener("click", () => {
 
   let blockmovement = hitbox(block, grid);
   lastRotation[0] = block[1].rotation;
   lastRotation[1] = block[0].x;
-  // console.log(e.key);¨
 
-  if (death !== true) {
-    if (buttonClass === "A" && blockmovement !== "left") {
-      block[0].x--;
-    }
-    if (buttonClass === "D" && blockmovement !== "right") {
-      block[0].x++;
-    }
-    if (buttonClass === "Q") {
-      if (block[1].rotation >= 1) {
-        block[1].rotation--;
-      } else {
-        block[1].rotation = block[1].rotation + 3;
-      }
-    }
-    if (buttonClass === "E") {
-      if (block[1].rotation <= 2) {
-        block[1].rotation++;
-      } else {
-        block[1].rotation = block[1].rotation - 3;
-      }
-    }
 
-    //console.log(block[1].rotation, lastRotation);
-    rotate(block, grid, lastRotation);
-
-    //    render(block, grid);
-  }
+  console.log("ww")
+  if (death !== true && blockmovement !== "left") {
+    block[0].x++;
+  };
 });
 
-document.getElementById("S").addEventListener("touchstart", (e) => {
+document.getElementById("A").addEventListener("click", () => {
+
+  let blockmovement = hitbox(block, grid);
+  lastRotation[0] = block[1].rotation;
+  lastRotation[1] = block[0].x;
+
+  if (death !== true && blockmovement !== "left") {
+    block[0].x--;
+};
+});
+
+document.getElementById("W").addEventListener("click", () => {
+
+
+  lastRotation[0] = block[1].rotation;
+  lastRotation[1] = block[0].x;
+
+
+  if (death !== true ) {
+    if (block[1].rotation <= 2) {
+      block[1].rotation++;
+    } else {
+      block[1].rotation = block[1].rotation - 3;
+    }
+  };
+
+  rotate(block, grid, lastRotation);
+});
+
+document.getElementById("S").addEventListener("touchstart", () => {
   if (sHeld) {
     movCount = 1;
     movSpeed = 1;
@@ -576,7 +579,7 @@ document.getElementById("S").addEventListener("touchstart", (e) => {
     console.log("ww");
   }
 });
-document.getElementById("S").addEventListener("touchend", (e) => {
+document.getElementById("S").addEventListener("touchend", () => {
   if (!sHeld) {
     movCount = 5;
     movSpeed = 5;
