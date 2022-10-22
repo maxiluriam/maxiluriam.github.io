@@ -188,9 +188,10 @@ p {
   }
 
   #block {
+
   
     border: solid 1px #181818;
-    border-radius: 510px;
+    border-radius: 5px;
   }
 
   #PhoneButtons {
