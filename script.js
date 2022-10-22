@@ -122,31 +122,21 @@ let render = function (Block, grid) {
   const container = document.getElementById("container");
   container.innerHTML = "";
 
-  for (let i = 2; i < Block.length; i++) {
-    const snakeSegment = document.createElement("div");
-    snakeSegment.id = "block";
-    snakeSegment.style = `
-             grid-row: ${Block[0].y + Block[i].y + 1} / ${
-      Block[0].y + Block[i].y + 1
-    };
-             grid-column: ${Block[0].x + Block[i].x}/${
-      Block[0].x + Block[i].x
-    };`;
-    snakeSegment.className = block[1].block;
 
-    container.appendChild(snakeSegment);
-  }
 
   for (let i = 0; i < grid.length; i++) {
     for (let j = 0; j < grid[i].length; j++) {
-      if (grid[i][j] !== 0) {
+      
         const snakeSegment = document.createElement("div");
         snakeSegment.id = "block";
         snakeSegment.style = `
                    grid-row: ${i + 1} / ${i + 1};
                    grid-column: ${j + 1}/${j + 1};`;
-
-        if (grid[i][j] === 2) {
+          if (grid[i][j] === 0) {
+          snakeSegment.className = "background";
+        } else if (grid[i][j] === 1) {
+          snakeSegment.className = "border";
+        } else if (grid[i][j] === 2) {
           snakeSegment.className = "tBlock";
         } else if (grid[i][j] === 3) {
           snakeSegment.className = "strait";
@@ -163,8 +153,23 @@ let render = function (Block, grid) {
         }
 
         container.appendChild(snakeSegment);
-      }
+      
     }
+  }
+
+  for (let i = 2; i < Block.length; i++) {
+    const snakeSegment = document.createElement("div");
+    snakeSegment.id = "block";
+    snakeSegment.style = `
+             grid-row: ${Block[0].y + Block[i].y + 1} / ${
+      Block[0].y + Block[i].y + 1
+    };
+             grid-column: ${Block[0].x + Block[i].x}/${
+      Block[0].x + Block[i].x
+    };`;
+    snakeSegment.className = block[1].block;
+
+    container.appendChild(snakeSegment);
   }
 };
 
@@ -457,13 +462,14 @@ const score = document.getElementById("score");
 score.innerHTML = 0;
 let scoreCount = 0;
 let clear = function (grid) {
+  let pointsToAdd = 0
   for (let i = 1; i < grid.length - 1; i++) {
     // console.log(grid[i]);
 
     let text = JSON.stringify(grid[i]);
     if (!text.includes("0")) {
+      pointsToAdd += 1000;
       setTimeout(() => {
-        score.innerHTML = parseInt(score.innerHTML) + 1000;
         grid.splice(i, 1);
         grid.splice(0, 1);
         grid.unshift([1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]);
@@ -472,6 +478,8 @@ let clear = function (grid) {
       }, "25");
     }
   }
+
+  return pointsToAdd
 };
 
 let hitbox = function (Block, grid) {
@@ -488,8 +496,7 @@ let hitbox = function (Block, grid) {
     }
   }
 };
-let alterSpeed = function (movCount, movSpeed) {
-  let points = parseInt(score.innerHTML);
+let alterSpeed = function (movCount, movSpeed,points) {
   let countCache = movCount;
   let SpeedCache = movSpeed;
 
@@ -521,21 +528,31 @@ let counter = function (i, j) {
   return i;
 };
 
-let pointsUpp = function (sHeld) {
-  if (sHeld === false) {
-    score.innerHTML = parseInt(score.innerHTML) + 1;
+function renderpoints(points) {
+  let score = document.getElementById("score")
+  score.innerHTML = ""
+  points = points + 100000000
+  points = points + ""  
+
+  console.log()
+  for (let i = 1; i < 9; i++) {
+    let number = document.createElement("p")
+    number.textContent = points[i]
+    score.appendChild(number);
   }
-};
+
+}
+
+
 
 
 document.getElementById("D").addEventListener("click", () => {
 
   let blockmovement = hitbox(block, grid);
-  lastRotation[0] = block[1].rotation;
-  lastRotation[1] = block[0].x;
 
 
-  console.log("ww")
+
+
   if (death !== true && blockmovement !== "right") {
     block[0].x++;
   };
@@ -544,8 +561,7 @@ document.getElementById("D").addEventListener("click", () => {
 document.getElementById("A").addEventListener("click", () => {
 
   let blockmovement = hitbox(block, grid);
-  lastRotation[0] = block[1].rotation;
-  lastRotation[1] = block[0].x;
+
 
   if (death !== true && blockmovement !== "left") {
     block[0].x--;
@@ -576,7 +592,7 @@ document.getElementById("S").addEventListener("touchstart", () => {
     movSpeed = 1;
     sHeld = false;
 
-    console.log("ww");
+    
   }
 });
 document.getElementById("S").addEventListener("touchend", () => {
@@ -594,6 +610,7 @@ let death = false;
 let block = [];
 
 let delay = 50;
+let points = 0;
 
 let movCount = 5;
 let movSpeed = 5;
@@ -601,6 +618,7 @@ let checkCount = 10;
 let checkSpeed = 10;
 let sHeld = true;
 let lastRotation = [0, 0];
+
 
 let countCache = 5;
 let SpeedCache = 5;
@@ -640,7 +658,10 @@ window.addEventListener("keydown", (e) => {
       } else if (pause === true) {
         pause = false;
       }
-    } else if ((e.key === "a" || e.which === 37) && blockmovement !== "left") {
+}
+      if (!pause) {
+      
+      if ((e.key === "a" || e.which === 37) && blockmovement !== "left") {
       block[0].x--;
     } else if ((e.key === "d" || e.which === 39) && blockmovement !== "right") {
       block[0].x++;
@@ -657,13 +678,16 @@ window.addEventListener("keydown", (e) => {
         block[1].rotation = block[1].rotation - 3;
       }
     }
-
+  }
+    
     //console.log(block[1].rotation, lastRotation);
     rotate(block, grid, lastRotation);
 
     //    render(block, grid);
   }
+
 });
+
 
 block = chooseBlock();
 let land = false;
@@ -671,11 +695,13 @@ let land = false;
 let blockTick = setInterval(function () {
   if (pause === false) {
     // console.log(movCount,movSpeed);
-    pointsUpp(sHeld);
+    if(!sHeld){
+      points += 1
+    }
     movCount = counter(movCount, movSpeed);
     [movCount, movSpeed, countCache, SpeedCache] = alterSpeed(
       movCount,
-      movSpeed
+      movSpeed,points
     );
     //  console.log(movCount,movSpeed);
 
@@ -690,7 +716,8 @@ let blockTick = setInterval(function () {
     land = checkLanding(grid, block, landed);
 
     render(block, grid);
-    clear(grid);
+    points +=  clear(grid);
+    renderpoints(points)
     if (death === true) {
       clearInterval(blockTick);
       addRestartButton();
