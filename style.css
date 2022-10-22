@@ -187,7 +187,12 @@ p {
     /* border: inset 2px var(--restartbackground); */
   }
 
+  #block {
+    background-color: red;
   
+    border: solid 1px #181818;
+    border-radius: 5px;
+  }
 
   #PhoneButtons {
 
