@@ -531,7 +531,7 @@ let counter = function (i, j) {
 function renderpoints(points) {
   let score = document.getElementById("score")
   score.innerHTML = ""
-  points = points + 100000000
+  points = points + 9000000000
   points = points + ""  
 
   console.log()
