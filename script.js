@@ -628,7 +628,7 @@ document.addEventListener("keydown", keyDownHandler);
 document.addEventListener("keyup", keyUpHandler);
 
 function keyDownHandler(e) {
-  if ((e.key === "s" || e.which === 40) && sHeld === true) {
+  if ((e.key === "s" || e.key === "ArrowDown") && sHeld === true) {
     movCount = 1;
     movSpeed = 1;
     sHeld = false;
@@ -636,7 +636,7 @@ function keyDownHandler(e) {
 }
 
 function keyUpHandler(e) {
-  if ((e.key === "s" || e.which === 40) && sHeld === false) {
+  if ((e.key === "s" || e.key === "ArrowDown" ) && sHeld === false) {
     movCount = 5;
     movSpeed = 5;
     sHeld = true;
@@ -661,9 +661,9 @@ window.addEventListener("keydown", (e) => {
 }
       if (!pause) {
       
-      if ((e.key === "a" || e.which === 37) && blockmovement !== "left") {
+      if ((e.key === "a" || e.key === "ArrowLeft") && blockmovement !== "left") {
       block[0].x--;
-    } else if ((e.key === "d" || e.which === 39) && blockmovement !== "right") {
+    } else if ((e.key === "d" || e.key === "ArrowRight") && blockmovement !== "right") {
       block[0].x++;
     } else if (e.key === "q") {
       if (block[1].rotation >= 1) {
@@ -671,7 +671,7 @@ window.addEventListener("keydown", (e) => {
       } else {
         block[1].rotation = block[1].rotation + 3;
       }
-    } else if (e.key === "e" || e.key === "w" || e.which === 38) {
+    } else if (e.key === "e" || e.key === "w" || e.key === "ArrowUp") {
       if (block[1].rotation <= 2) {
         block[1].rotation++;
       } else {
