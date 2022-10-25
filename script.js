@@ -122,38 +122,34 @@ let render = function (Block, grid) {
   const container = document.getElementById("container");
   container.innerHTML = "";
 
-
-
   for (let i = 0; i < grid.length; i++) {
     for (let j = 0; j < grid[i].length; j++) {
-      
-        const snakeSegment = document.createElement("div");
-        snakeSegment.id = "block";
-        snakeSegment.style = `
+      const snakeSegment = document.createElement("div");
+      snakeSegment.id = "block";
+      snakeSegment.style = `
                    grid-row: ${i + 1} / ${i + 1};
                    grid-column: ${j + 1}/${j + 1};`;
-          if (grid[i][j] === 0) {
-          snakeSegment.className = "background";
-        } else if (grid[i][j] === 1) {
-          snakeSegment.className = "border";
-        } else if (grid[i][j] === 2) {
-          snakeSegment.className = "tBlock";
-        } else if (grid[i][j] === 3) {
-          snakeSegment.className = "strait";
-        } else if (grid[i][j] === 4) {
-          snakeSegment.className = "rightL";
-        } else if (grid[i][j] === 5) {
-          snakeSegment.className = "leftL";
-        } else if (grid[i][j] === 6) {
-          snakeSegment.className = "square";
-        } else if (grid[i][j] === 7) {
-          snakeSegment.className = "leftS";
-        } else if (grid[i][j] === 8) {
-          snakeSegment.className = "rightS";
-        }
+      if (grid[i][j] === 0) {
+        snakeSegment.className = "background";
+      } else if (grid[i][j] === 1) {
+        snakeSegment.className = "border";
+      } else if (grid[i][j] === 2) {
+        snakeSegment.className = "tBlock";
+      } else if (grid[i][j] === 3) {
+        snakeSegment.className = "strait";
+      } else if (grid[i][j] === 4) {
+        snakeSegment.className = "rightL";
+      } else if (grid[i][j] === 5) {
+        snakeSegment.className = "leftL";
+      } else if (grid[i][j] === 6) {
+        snakeSegment.className = "square";
+      } else if (grid[i][j] === 7) {
+        snakeSegment.className = "leftS";
+      } else if (grid[i][j] === 8) {
+        snakeSegment.className = "rightS";
+      }
 
-        container.appendChild(snakeSegment);
-      
+      container.appendChild(snakeSegment);
     }
   }
 
@@ -462,7 +458,7 @@ const score = document.getElementById("score");
 score.innerHTML = 0;
 let scoreCount = 0;
 let clear = function (grid) {
-  let pointsToAdd = 0
+  let pointsToAdd = 0;
   for (let i = 1; i < grid.length - 1; i++) {
     // console.log(grid[i]);
 
@@ -479,7 +475,7 @@ let clear = function (grid) {
     }
   }
 
-  return pointsToAdd
+  return pointsToAdd;
 };
 
 let hitbox = function (Block, grid) {
@@ -496,7 +492,7 @@ let hitbox = function (Block, grid) {
     }
   }
 };
-let alterSpeed = function (movCount, movSpeed,points) {
+let alterSpeed = function (movCount, movSpeed, points) {
   let countCache = movCount;
   let SpeedCache = movSpeed;
 
@@ -529,59 +525,46 @@ let counter = function (i, j) {
 };
 
 function renderpoints(points) {
-  let score = document.getElementById("score")
-  score.innerHTML = ""
-  points = points + 900000000
-  points = points + ""  
+  let score = document.getElementById("score");
+  score.innerHTML = "";
+  points = points + 900000000;
+  points = points + "";
 
-  console.log()
+  console.log();
   for (let i = 1; i < 9; i++) {
-    let number = document.createElement("p")
-    number.textContent = points[i]
+    let number = document.createElement("p");
+    number.textContent = points[i];
     score.appendChild(number);
   }
-
 }
 
-
-
-
 document.getElementById("D").addEventListener("click", () => {
-
   let blockmovement = hitbox(block, grid);
-
-
-
 
   if (death !== true && blockmovement !== "right") {
     block[0].x++;
-  };
+  }
 });
 
 document.getElementById("A").addEventListener("click", () => {
-
   let blockmovement = hitbox(block, grid);
-
 
   if (death !== true && blockmovement !== "left") {
     block[0].x--;
-};
+  }
 });
 
 document.getElementById("W").addEventListener("click", () => {
-
-
   lastRotation[0] = block[1].rotation;
   lastRotation[1] = block[0].x;
 
-
-  if (death !== true ) {
+  if (death !== true) {
     if (block[1].rotation <= 2) {
       block[1].rotation++;
     } else {
       block[1].rotation = block[1].rotation - 3;
     }
-  };
+  }
 
   rotate(block, grid, lastRotation);
 });
@@ -591,8 +574,6 @@ document.getElementById("S").addEventListener("touchstart", () => {
     movCount = 1;
     movSpeed = 1;
     sHeld = false;
-
-    
   }
 });
 document.getElementById("S").addEventListener("touchend", () => {
@@ -619,7 +600,6 @@ let checkSpeed = 10;
 let sHeld = true;
 let lastRotation = [0, 0];
 
-
 let countCache = 5;
 let SpeedCache = 5;
 
@@ -636,7 +616,7 @@ function keyDownHandler(e) {
 }
 
 function keyUpHandler(e) {
-  if ((e.key === "s" || e.key === "ArrowDown" ) && sHeld === false) {
+  if ((e.key === "s" || e.key === "ArrowDown") && sHeld === false) {
     movCount = 5;
     movSpeed = 5;
     sHeld = true;
@@ -658,36 +638,39 @@ window.addEventListener("keydown", (e) => {
       } else if (pause === true) {
         pause = false;
       }
-}
-      if (!pause) {
-      
-      if ((e.key === "a" || e.key === "ArrowLeft") && blockmovement !== "left") {
-      block[0].x--;
-    } else if ((e.key === "d" || e.key === "ArrowRight") && blockmovement !== "right") {
-      block[0].x++;
-    } else if (e.key === "q") {
-      if (block[1].rotation >= 1) {
-        block[1].rotation--;
-      } else {
-        block[1].rotation = block[1].rotation + 3;
-      }
-    } else if (e.key === "e" || e.key === "w" || e.key === "ArrowUp") {
-      if (block[1].rotation <= 2) {
-        block[1].rotation++;
-      } else {
-        block[1].rotation = block[1].rotation - 3;
+    }
+    if (!pause) {
+      if (
+        (e.key === "a" || e.key === "ArrowLeft") &&
+        blockmovement !== "left"
+      ) {
+        block[0].x--;
+      } else if (
+        (e.key === "d" || e.key === "ArrowRight") &&
+        blockmovement !== "right"
+      ) {
+        block[0].x++;
+      } else if (e.key === "q") {
+        if (block[1].rotation >= 1) {
+          block[1].rotation--;
+        } else {
+          block[1].rotation = block[1].rotation + 3;
+        }
+      } else if (e.key === "e" || e.key === "w" || e.key === "ArrowUp") {
+        if (block[1].rotation <= 2) {
+          block[1].rotation++;
+        } else {
+          block[1].rotation = block[1].rotation - 3;
+        }
       }
     }
-  }
-    
+
     //console.log(block[1].rotation, lastRotation);
     rotate(block, grid, lastRotation);
 
     //    render(block, grid);
   }
-
 });
-
 
 block = chooseBlock();
 let land = false;
@@ -695,13 +678,14 @@ let land = false;
 let blockTick = setInterval(function () {
   if (pause === false) {
     // console.log(movCount,movSpeed);
-    if(!sHeld){
-      points += 1
+    if (!sHeld) {
+      points += 1;
     }
     movCount = counter(movCount, movSpeed);
     [movCount, movSpeed, countCache, SpeedCache] = alterSpeed(
       movCount,
-      movSpeed,points
+      movSpeed,
+      points
     );
     //  console.log(movCount,movSpeed);
 
@@ -716,8 +700,8 @@ let blockTick = setInterval(function () {
     land = checkLanding(grid, block, landed);
 
     render(block, grid);
-    points +=  clear(grid);
-    renderpoints(points)
+    points += clear(grid);
+    renderpoints(points);
     if (death === true) {
       clearInterval(blockTick);
       addRestartButton();

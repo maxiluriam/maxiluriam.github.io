@@ -149,6 +149,7 @@ p {
   height: 33px;
   width: 33px;
   background-color: #3d3d3d;
+  color: white;
 }
 
 #inactive-button.yes {
