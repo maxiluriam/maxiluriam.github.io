@@ -92,7 +92,6 @@ let createGrid = function () {
   }
   grid.push([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
 
-  //console.log(grid);
   return grid;
 };
 
@@ -230,8 +229,6 @@ let checkLanding = function (grid, Block, landed) {
         }
       }
     }, "50");
-
-    //  console.log(grid);
   }
 };
 
@@ -271,7 +268,6 @@ let rotate = function (block, grid, lastRotation) {
         grid[block[0].y + block[k].y][block[0].x + block[k].x] !== 0 &&
         grid[block[0].y + block[k].y][block[0].x + block[k].x - 2] !== 0
       ) {
-        // console.log("ww");
         block[1].rotation = lastRotation[0];
 
         break;
@@ -428,14 +424,10 @@ let rotate = function (block, grid, lastRotation) {
       if (grid[block[0].y + block[k].y][block[0].x + block[k].x - 1] !== 0) {
         if (grid[block[0].y + block[k].y][block[0].x + block[k].x] !== 0) {
           block[0].x--;
-
-          // console.log("ee");
         } else if (
           grid[block[0].y + block[k].y][block[0].x + block[k].x - 2] !== 0
         ) {
           block[0].x++;
-
-          //  console.log("ee");
         } else {
           block[1].rotation = lastRotation[0];
           break;
@@ -460,8 +452,6 @@ let scoreCount = 0;
 let clear = function (grid) {
   let pointsToAdd = 0;
   for (let i = 1; i < grid.length - 1; i++) {
-    // console.log(grid[i]);
-
     let text = JSON.stringify(grid[i]);
     if (!text.includes("0")) {
       pointsToAdd += 1000;
@@ -470,7 +460,6 @@ let clear = function (grid) {
         grid.splice(0, 1);
         grid.unshift([1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]);
         grid.unshift([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
-        //   console.log("ee");
       }, "25");
     }
   }
@@ -629,7 +618,6 @@ window.addEventListener("keydown", (e) => {
   let blockmovement = hitbox(block, grid);
   lastRotation[0] = block[1].rotation;
   lastRotation[1] = block[0].x;
-  // console.log(e.key);¨
 
   if (death !== true) {
     if (e.key === "p") {
@@ -665,10 +653,7 @@ window.addEventListener("keydown", (e) => {
       }
     }
 
-    //console.log(block[1].rotation, lastRotation);
     rotate(block, grid, lastRotation);
-
-    //    render(block, grid);
   }
 });
 
@@ -677,7 +662,6 @@ let land = false;
 
 let blockTick = setInterval(function () {
   if (pause === false) {
-    // console.log(movCount,movSpeed);
     if (!sHeld) {
       points += 1;
     }
@@ -687,7 +671,6 @@ let blockTick = setInterval(function () {
       movSpeed,
       points
     );
-    //  console.log(movCount,movSpeed);
 
     let death = checkDeath(grid);
 
