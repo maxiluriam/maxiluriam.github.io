@@ -22,8 +22,6 @@ body {
   grid-column: 1/29;
   touch-action: manipulation;
   margin: auto;
-
-
 }
 #PhoneButtons button {
   padding: 70px;
@@ -35,7 +33,6 @@ body {
 
   background-color: #0a0a0a;
 }
-
 
 .body {
   overflow: hidden;
@@ -52,7 +49,7 @@ body {
   grid-template-rows: repeat(22, 1fr);
   margin: auto;
   height: 800px;
-  width: 500px;
+  width: 475px;
   grid-row: 2/10;
   grid-column: 6/12;
   background-color: #181818;
@@ -79,33 +76,26 @@ body {
 }
 
 #block.tBlock {
-  
   background-color: #7315a2;
 }
 #block.strait {
-  
-  background-color: #14d4d4; 
+  background-color: #14d4d4;
 }
 #block.rightL {
-  
   background-color: #f0a000;
 }
 #block.leftL {
- 
   background-color: #1e90ff;
 }
 
 #block.square {
-  
   background-color: #f0f000;
 }
 #block.leftS {
- 
   background-color: #c1301c;
 }
 
 #block.rightS {
- 
   background-color: #0fb10f;
 }
 
@@ -115,7 +105,6 @@ body {
   background-color: #181818;
   border-radius: 5px;
   border: solid 1px #3d3d3d;
-
 
   color: rgb(4, 188, 4);
   display: grid;
@@ -139,8 +128,6 @@ body {
   grid-row: 2/3;
   grid-column: 3/5;
 
-
-  
   border-width: 1px;
 
   font-size: 30px;
@@ -153,7 +140,6 @@ body {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(1, 1fr);
-  
 }
 
 p {
@@ -164,7 +150,6 @@ p {
   width: 33px;
   background-color: #3d3d3d;
 }
-
 
 #inactive-button.yes {
   background-color: #181818;
@@ -188,14 +173,11 @@ p {
   }
 
   #block {
-
-  
     border: solid 1px #181818;
     border-radius: 5px;
   }
 
   #PhoneButtons {
-
     margin-top: 0px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -219,9 +201,8 @@ p {
     margin: auto;
     margin-top: 0px;
     margin-bottom: 0px;
-
   }
-  p{
+  p {
     margin-top: 5px;
     margin-bottom: 5px;
   }
@@ -234,7 +215,5 @@ p {
   #container {
     grid-row: 2/10;
     grid-column: 6/12;
-
-   
   }
 }
