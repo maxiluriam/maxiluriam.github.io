@@ -1,0 +1,220 @@
+:root {
+  --background: rgba(151, 147, 147, 0.569);
+  --snakecolor: rgb(36, 71, 34);
+  --applecolor: rgb(36, 71, 34);
+  --restartbackground: rgb(255, 255, 255);
+  --restartbutoncolor: rgb(143, 143, 143);
+}
+
+html {
+  background-color: #181818;
+  touch-action: manipulation;
+}
+
+body {
+  min-height: 900px;
+  margin: 0%;
+  overflow-y: hidden;
+}
+
+#PhoneButtons {
+  grid-row: 25/25;
+  grid-column: 1/29;
+  touch-action: manipulation;
+  margin: auto;
+}
+#PhoneButtons button {
+  padding: 70px;
+  touch-action: manipulation;
+  margin: 10px;
+  border: none;
+
+  border-radius: 10%;
+
+  background-color: #0a0a0a;
+}
+
+.body {
+  overflow: hidden;
+
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+
+  background-color: #181818;
+}
+#container {
+  display: grid;
+  grid-template-columns: repeat(13, 1fr);
+  grid-template-rows: repeat(22, 1fr);
+  margin: auto;
+  height: 800px;
+  width: 475px;
+  grid-row: 2/10;
+  grid-column: 6/12;
+  background-color: #181818;
+  border-radius: 5px;
+
+  /* border: inset 2px var(--restartbackground); */
+}
+
+#block {
+  background-color: #181818;
+
+  border: solid 1px #181818;
+  border-radius: 5px;
+}
+#block.background {
+  background-color: #3d3d3d;
+
+  border: solid 1px #181818;
+}
+#block.border {
+  background-color: #181818;
+
+  border: solid 1px #181818;
+}
+
+#block.tBlock {
+  background-color: #7315a2;
+}
+#block.strait {
+  background-color: #14d4d4;
+}
+#block.rightL {
+  background-color: #f0a000;
+}
+#block.leftL {
+  background-color: #1e90ff;
+}
+
+#block.square {
+  background-color: #f0f000;
+}
+#block.leftS {
+  background-color: #c1301c;
+}
+
+#block.rightS {
+  background-color: #0fb10f;
+}
+
+.resetForm {
+  grid-row: 5/8;
+  grid-column: 5/10;
+  background-color: #181818;
+  border-radius: 5px;
+  border: solid 1px #3d3d3d;
+
+  color: rgb(4, 188, 4);
+  display: grid;
+  grid-template-columns: repeat(32, 1fr);
+  grid-template-rows: repeat(16, 1fr);
+
+  border: solid #181818;
+  border-width: 0.07cm;
+}
+
+.resetForm button {
+  grid-row: 2/16;
+  grid-column: 2/32;
+  background-color: #3d3d3d;
+  border: solid #ffffff;
+  border-width: 0px;
+  font-size: 30px;
+}
+
+#score {
+  grid-row: 2/3;
+  grid-column: 3/5;
+
+  border-width: 1px;
+
+  font-size: 30px;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  vertical-align: text-top;
+  text-align: justify;
+
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+}
+
+p {
+  text-align: center;
+  border: solid 1px #181818;
+  border-radius: 5px;
+  height: 33px;
+  width: 33px;
+  background-color: #3d3d3d;
+  color: white;
+}
+
+#inactive-button.yes {
+  background-color: #181818;
+  border: solid 1px #181818;
+
+  margin: 10px;
+}
+
+@media screen and (max-width: 1200px) {
+  .body {
+    display: block;
+  }
+
+  #container {
+    height: 450px;
+    width: 300px;
+
+    margin-bottom: 0px;
+
+    /* border: inset 2px var(--restartbackground); */
+  }
+
+  #block {
+    border: solid 1px #181818;
+    border-radius: 5px;
+  }
+
+  #PhoneButtons {
+    margin-top: 0px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+
+    height: 130px;
+    width: 200px;
+  }
+  #PhoneButtons button {
+    padding: 20px;
+    display: block;
+    margin: 5px;
+  }
+
+  .resetForm button {
+    font-size: 100%;
+  }
+
+  #score {
+    width: 280px;
+    margin: auto;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  #PhoneButtons button {
+    display: none;
+  }
+
+  #container {
+    grid-row: 2/10;
+    grid-column: 6/12;
+  }
+}
