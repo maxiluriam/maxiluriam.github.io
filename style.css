@@ -1,7 +1,7 @@
 .Main-Container {
   display: grid;
   grid-template-columns: repeat(16, 1fr);
-  grid-template-rows: repeat(20, 10%);
+  grid-template-rows: repeat(10, 10%);
 }
 
 .header {
@@ -32,6 +32,7 @@ html {
 }
 body {
   margin: 0px;
+
 }
 
 a {
@@ -51,7 +52,7 @@ h1 {
   text-decoration: black;
 
   background: black;
-  border-radius: 999px;
+  border-radius: 25px;
   box-shadow: black 0 10px 20px -10px;
   box-sizing: border-box;
   color: #ffffff;
@@ -81,7 +82,7 @@ h1 {
   text-decoration: black;
 
   background: #2465b0;
-  border-radius: 999px;
+  border-radius: 25px;
   box-shadow: black 0 10px 20px -10px;
   box-sizing: border-box;
   color: #ffffff;
