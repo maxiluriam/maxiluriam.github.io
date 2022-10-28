@@ -267,3 +267,58 @@ svg {
 
   flex-direction: column;
 }
+
+
+@media screen and (max-width: 1200px) {
+
+  
+.proggressDiv {
+margin: auto;
+}
+
+
+  .Main-Container {
+    display: block;
+
+  }
+  .header {
+
+    display: block;
+
+  }
+
+  .git {
+
+    
+   font-size: 0px;
+    padding: 7px;
+    padding-top: 30px;
+    padding-bottom: 7px;
+   
+  }
+  
+  .link {
+    
+    font-size: 0px;
+    padding: 7px;
+    padding-top: 30px;
+    padding-bottom: 7px;
+  }
+  .text {
+display: block;
+
+font-size: 17px;
+  }
+
+  h1{
+
+    margin-bottom: 10px;
+  }
+
+
+  .infoDiv h2{
+
+    margin: 5px;
+  }
+
+  }

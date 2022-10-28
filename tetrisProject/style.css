@@ -48,8 +48,8 @@ body {
   grid-template-columns: repeat(13, 1fr);
   grid-template-rows: repeat(22, 1fr);
   margin: auto;
-  height: 800px;
-  width: 475px;
+  height: 700px;
+  width: 450px;
   grid-row: 2/10;
   grid-column: 6/12;
   background-color: #181818;
