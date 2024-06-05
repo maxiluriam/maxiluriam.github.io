@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="enigm_function.js" defer type="module"></script>
+    <script src="script.js" defer type="module"></script>
+  </head>
+  <body>
+    <div class="headline">
+      <h2>Det här är en helt fungerande enigma maskin.</h1>
+      <h3>
+        Skriv text i den vänstra rutan för att kryptera. Den krypterade texten
+        kommer ut i den högra rutan.
+      </h3>
+      <h3>
+        för att avkryptera behöver du lägga den krypterade texten i vänstra rutan
+        med samma kombination bokstäver i mitten.
+      </h3>
+    </div>
+    <div id="Container" class="main-container">
+      <div class="main-main-container">
+        <textarea name="" id="plaintext" cols="30" rows="10">
+Det här är ett exempel</textarea
+        >
+
+        <div class="rotationes-container">
+          <div id="rotationes-container-child">
+            <button id="drum-rotator-plus">+</button>
+            <p name="" id="rotations"></p>
+            <button id="drum-rotator-minus">-</button>
+          </div>
+          <div id="rotationes-container-child">
+            <button id="drum-rotator-plus">+</button>
+            <p name="" id="rotations"></p>
+            <button id="drum-rotator-minus">-</button>
+          </div>
+          <div id="rotationes-container-child">
+            <button id="drum-rotator-plus">+</button>
+            <p name="" id="rotations"></p>
+            <button id="drum-rotator-minus">-</button>
+          </div>
+        </div>
+
+        <textarea name="" id="chipertext" cols="30" rows="10"></textarea>
+      </div>
+    </div>
+  </body>
+</html>
